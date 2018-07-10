@@ -13,6 +13,7 @@ class App extends Component {
 		]
 	}
 
+
 	switchNameHandler = () =>{
 		// console.log('was clicked');
 		// this.state.persons[0].name= "Ayush" not done directly
@@ -30,7 +31,7 @@ class App extends Component {
 
 		this.setState({
 			persons: [
-		{name: 'Ayush', age: '28'},
+		{name: event.target.value, age: '28'},
 		{name: event.target.value, age: '38'},
 		{name: 'steffanie', age: '38'},
 
@@ -39,15 +40,25 @@ class App extends Component {
 	}
 
 
+
   render () {
+  	const style = {
+		backgroundColor: 'white',
+		font: 'inherit',
+		border: '1px solid blue',
+		padding: '8px',
+
+	};
+
     return (
       <div className='App'>
         <h1> Hi, I am an app</h1>
-        <button onClick={this.switchNameHandler}>switch name</button>
+        <button style={style} onClick={this.switchNameHandler}>switch name</button>
         <Person
          name={this.state.persons[0].name}
           age={this.state.persons[0].age}
-          click={this.switchNameHandler} />
+          click={this.switchNameHandler} 
+          changed={this.nameChangedHandler }/>
         <Person
          name={this.state.persons[1].name} 
          age={this.state.persons[1].age} 
